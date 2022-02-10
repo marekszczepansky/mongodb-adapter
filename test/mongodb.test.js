@@ -106,7 +106,7 @@ describe('mongodb', function(){
 
     it('should create an object if wrong id type is passed if using upsert', function(done) {
         var id = new db.ObjectID;
-        User.upsert({id: id}, function(err, user) {
+        User.upsert({id: id, email: 'user@email.com'}, function(err, user) {
             should.not.exist(err);
             should.exist(user);
             user.id.toString().should.equal(id.toString());
@@ -147,4 +147,3 @@ describe('mongodb', function(){
         });
     });
 });
-
